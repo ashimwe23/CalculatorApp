@@ -7,7 +7,7 @@ function useCalculator() {
   const [operator, setOperator] = useState(null);
   const [waitingForNextNumber, setWaitingForNextNumber] = useState(false);
 
-  // Calculate two numbers
+  // Perform the calculation
   function calculate(firstNumber, secondNumber, operator) {
     switch (operator) {
       case "+":
@@ -27,12 +27,16 @@ function useCalculator() {
     }
   }
 
-  
+  // Format the calculation result
   function formatResult(number) {
-    if (number === "Error") return "Error";
+    if (!Number.isFinite(number)) {
+      return "Error";
+    }
+
     return String(Number(number.toFixed(10)));
   }
 
+  // Handle number clicks
   function handleNumber(number) {
     if (display === "Error" || waitingForNextNumber) {
       setDisplay(number);
@@ -44,6 +48,8 @@ function useCalculator() {
 
   // Handle operator clicks
   function handleOperator(nextOperator) {
+    if (display === "Error") return;
+
     const currentNumber = Number(display);
 
     if (previousValue === null) {
@@ -76,19 +82,28 @@ function useCalculator() {
     const currentNumber = Number(display);
     const result = calculate(previousValue, currentNumber, operator);
 
-    setDisplay(formatResult(result));
+    setDisplay(result === "Error" ? "Error" : formatResult(result));
     setPreviousValue(null);
     setOperator(null);
     setWaitingForNextNumber(true);
   }
 
-  
+  // Clear everything
+  function handleClear() {
+    setDisplay("0");
+    setPreviousValue(null);
+    setOperator(null);
+    setWaitingForNextNumber(false);
+  }
+
+
   return {
     display,
     handleNumber,
     handleOperator,
     handleEquals,
- 
+    handleClear,
+  
   };
 }
 
