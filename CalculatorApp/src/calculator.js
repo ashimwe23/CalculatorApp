@@ -96,6 +96,29 @@ function useCalculator() {
     setWaitingForNextNumber(false);
   }
 
+  // Handle decimal point
+  function handleDecimal() {
+    if (display === "Error" || waitingForNextNumber) {
+      setDisplay("0.");
+      setWaitingForNextNumber(false);
+    } else if (!display.includes(".")) {
+      setDisplay(display + ".");
+    }
+  }
+
+  // Handle percentage
+  function handlePercentage() {
+    if (display !== "Error") {
+      setDisplay(formatResult(Number(display) / 100));
+    }
+  }
+
+  // Handle positive and negative numbers
+  function handleSign() {
+    if (display !== "Error" && display !== "0") {
+      setDisplay(formatResult(Number(display) * -1));
+    }
+  }
 
   return {
     display,
@@ -103,7 +126,9 @@ function useCalculator() {
     handleOperator,
     handleEquals,
     handleClear,
-  
+    handleDecimal,
+    handlePercentage,
+    handleSign,
   };
 }
 
