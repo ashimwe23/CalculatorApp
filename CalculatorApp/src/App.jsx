@@ -16,19 +16,19 @@ function App() {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center">
 
-      {/* Calculator body */}
+     
       <div className="w-[330px]">
 
-        {/* Display */}
+      
         <div className="h-[53px] bg-[#80808c] text-white text-right text-[40px] px-3 flex items-center justify-end overflow-hidden">
           {display}
         </div>
 
-        {/* Calculator table */}
+    
         <table className="w-full border-collapse">
           <tbody>
 
-            {/* First row */}
+            
             <tr>
               <td onClick={handleClear} className="h-[93px] border border-[#a5a5ad] bg-[#d6d6d8] text-black text-center text-2xl cursor-pointer">
                 AC
@@ -47,7 +47,7 @@ function App() {
               </td>
             </tr>
 
-            {/* Second row */}
+            
             <tr>
               <td onClick={() => handleNumber("7")} className="h-[93px] border border-[#a5a5ad] bg-[#d6d6d8] text-black text-center text-2xl cursor-pointer">7</td>
 
@@ -58,7 +58,7 @@ function App() {
               <td onClick={() => handleOperator("×")} className="h-[93px] border border-[#a5a5ad] bg-[#f58a32] text-white text-center text-2xl cursor-pointer">×</td>
             </tr>
 
-            {/* Third row */}
+           
             <tr>
               <td onClick={() => handleNumber("4")} className="h-[93px] border border-[#a5a5ad] bg-[#d6d6d8] text-black text-center text-2xl cursor-pointer">4</td>
 
@@ -69,7 +69,7 @@ function App() {
               <td onClick={() => handleOperator("-")} className="h-[93px] border border-[#a5a5ad] bg-[#f58a32] text-white text-center text-2xl cursor-pointer">-</td>
             </tr>
 
-            {/* Fourth row */}
+            
             <tr>
               <td onClick={() => handleNumber("1")} className="h-[93px] border border-[#a5a5ad] bg-[#d6d6d8] text-black text-center text-2xl cursor-pointer">1</td>
 
@@ -80,7 +80,7 @@ function App() {
               <td onClick={() => handleOperator("+")} className="h-[93px] border border-[#a5a5ad] bg-[#f58a32] text-white text-center text-2xl cursor-pointer">+</td>
             </tr>
 
-            {/* Fifth row */}
+           
             <tr>
               <td colSpan="2" onClick={() => handleNumber("0")} className="h-[93px] border border-[#a5a5ad] bg-[#d6d6d8] text-black text-center text-2xl cursor-pointer">
                 0
